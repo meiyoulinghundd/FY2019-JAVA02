@@ -8,9 +8,10 @@ import com.neuedu.view.UserView;
 import com.neuedu.view.impl.UserViewImpl;
 
 public class Application {
-	UserView userView=new UserViewImpl();
+	
+	
 	public static void main(String[] args) {
-		
+
 		Application  app= new Application();
 		 app.choise ();
 		// TODO Auto-generated method stub
@@ -26,8 +27,8 @@ public class Application {
 		int  num=s.nextInt();
 		
 		if(num==1) {
-      try {
-				
+         try {
+    	  UserView userView=new UserViewImpl();
 				userView.login();
 			} catch (LoginException e) {
 				// TODO Auto-generated catch block
@@ -35,20 +36,24 @@ public class Application {
 				
 				String msg=e.getMessage();
 				System.out.print(msg);
-				
+				 choise();
 			}
 		} else if (num==2)  {
 			try {
-			userView.register();
-			}	  catch(RegisterException  e )		{
+				 UserView userView=new UserViewImpl();
+				userView.register();
+			}	  catch(RegisterException  q)		{
 				
-				String msg=e.getMessage();
-				System.out.print(msg);
+				String qb=q.getMessage();
+				System.out.print(qb);
 			}
-			
+			choise();
+		}else {
+				System.out.println("输入有误，请重新输入");
+				choise();
+			}
 			
 		}
 	}
 
 
-}

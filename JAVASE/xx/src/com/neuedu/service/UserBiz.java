@@ -9,6 +9,14 @@ public interface UserBiz {
 		 void login(String username, String password) 
 				 throws LoginException ;//ÓÃ»§µÇÂ¼
 		boolean isusernameexists(String username) throws LoginException;
+
+		
+		boolean Testpassword2(String password)throws RegisterException;
+		boolean Testpassword(String passowrd1,String password2)throws RegisterException;
+		boolean Testusername1(String username) throws RegisterException;
+	
+
+		
 		 
 		 
 			/*

@@ -26,28 +26,24 @@ public class UserBizImpl  implements UserBiz  {
 	public void register(String username, String password, String password2, String name, String email)
 			throws RegisterException {
 		// TODO Auto-generated method stub
-		
-		boolean   username1= false;//默认用户名不存在
-		for(int i=0;i<users.length;i++) {
-			
-			User user=users[i];
-			if(user==null) {
-				continue;
-			}
-			String _username=user.getUsername();
-			if(_username.equals(username)) {
-				
-				username1=true;
-				throw new RegisterException("用户名已存在");
-			}  else {
-				
+		User user1 = new User();
+		user1.username=username;
+		user1.password=password;
+		user1.name=name;
+		user1.email=email;
+		for(int i = 0;i<users.length;i++) {
+			User user = users[i];
+			if(user == null) {
+				user=user1;
 				
 			}
-		}
-		
-		
-		
+		System.out.println(user.name);
 	}
+	System.out.println("注册成功！");
+}
+		
+		
+
 
 	@Override
 	public void login(String username, String password) throws LoginException {
@@ -109,27 +105,50 @@ public class UserBizImpl  implements UserBiz  {
 		 throw new LoginException("用户名不存在");
 		
 	}
-	
-
-  public boolean username1(String username) throws RegisterException {
-	
-		
-	for(int i=0;i<users.length;i++) {
+	public boolean Testusername1(String username) throws RegisterException{
+		for(int i =0;i<users.length;i++) {
+			User user =users[i];
 			
-			User user=users[i];
-	  
 			if(user==null) {
 				continue;
 			}
 			String _username=user.getUsername();
-			if(!_username.equals(username)) {//用户名存在
+			if(_username.equals(username)) {
+				throw new RegisterException("您输入的用户名已存在");
 				
-				   return true;
-				}
-	
+			}
+			
+		}
+		return true;	
 	}
-	 throw new RegisterException("用户名已存在");
-}
-}
+
+
+	@Override
+	public boolean Testpassword2(String password) throws RegisterException {
+		// TODO Auto-generated method stub
+		if(password.length()==0) {
+			throw new RegisterException("密码不能为空");
+			
+		}else {
+			return true;
+		}
+		
+	}
 	
+	
+
+
+
+	@Override
+	public boolean Testpassword(String passowrd1, String password2) throws RegisterException {
+		// TODO Auto-generated method stub
+		if(passowrd1.equals(password2)) {
+			return true;
+		}
+		throw new RegisterException("密码不一致");
+	}
+
+
+
+}
 
